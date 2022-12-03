@@ -14,7 +14,7 @@ app.get('/movies', (req, res) => {
     
     let search = req.query.search;
     console.log(search);
-    let requestString = 'https://api.themoviedb.org/3/search/movie?api_key=710a3ffeb5b7707f96f653dfd6c7cffd&query=' + search;
+    let requestString = 'https://api.themoviedb.org/3/search/movie?api_key=710a3ffeb5b7707f96f653dfd6c7cffd&include_adult=false&query=' + search;
     console.log(requestString);
     
 
