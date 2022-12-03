@@ -1,9 +1,41 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const https = require('https');
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
+});
+
+app.get('/movies', (req, res) => {
+    
+    let search = req.query.search;
+    console.log(search);
+    let requestString = 'https://api.themoviedb.org/3/search/movie?api_key=710a3ffeb5b7707f96f653dfd6c7cffd&query=' + search;
+    console.log(requestString);
+    
+
+    https.get(requestString, (resp) => {
+    let data = '';
+
+    // A chunk of data has been received.
+    resp.on('data', (chunk) => {
+        data += chunk;
+    });
+
+    // The whole response has been received. Print out the result.
+    resp.on('end', () => {
+        
+        let responseData = JSON.parse(data);
+        let results = responseData.results;
+        console.log(results.length);
+    });
+
+    }).on("error", (err) => {
+    console.log("Error: " + err.message);
+    });
+    //let response = await 
+
 });
 
 app.listen(port, () => {
