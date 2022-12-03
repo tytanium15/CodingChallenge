@@ -28,7 +28,20 @@ app.get('/movies', (req, res) => {
         
         let responseData = JSON.parse(data);
         let results = responseData.results;
-        console.log(results.length);
+        if (results.length > 10) {
+            results = results.slice(0,10);
+        }
+        let newResponseArray = [];
+        for (var i = 0; i < results.length; ++i) {
+            let movie = {
+                movie_id: results[i].id,
+                title: results[i].title,
+                poster_image_url: 'https://image.tmdb.org/t/p/w500/' + results[i].poster_path,
+                popularity_summary: (results[i].vote_average * 10) + "% with " + results[i].vote_count + " votes."
+            }
+            newResponseArray.push(movie);
+        }
+        res.send(newResponseArray);
     });
 
     }).on("error", (err) => {
