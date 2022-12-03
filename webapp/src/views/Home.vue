@@ -21,7 +21,7 @@ export default {
   methods: {
     async doSearch() {
       console.log(this.search);
-      await fetch('http://localhost:3000/movies?search='+this.search, {mode: 'cors'})
+      await fetch('http://localhost:3000/movies?search='+this.search)
             .then((result) => result.json())
             .then((data) => {
                 console.log(data);
