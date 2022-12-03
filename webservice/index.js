@@ -39,7 +39,7 @@ app.get('/movies', (req, res) => {
             let movie = {
                 movie_id: results[i].id,
                 title: results[i].title,
-                poster_image_url: 'https://image.tmdb.org/t/p/w500/' + results[i].poster_path,
+                poster_image_url: 'https://image.tmdb.org/t/p/w300/' + results[i].poster_path,
                 popularity_summary: (results[i].vote_average * 10) + "% with " + results[i].vote_count + " votes."
             }
             newResponseArray.push(movie);
