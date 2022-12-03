@@ -41,7 +41,7 @@ export default {
 
 
 .movie-info {
-
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: space-between;
@@ -52,6 +52,12 @@ export default {
 .movie-info p {
     padding-top: 1rem;
 
+}
+
+@media screen and (max-width: 800px) {
+    .movie {
+        flex-direction: column;
+    }
 }
 
 </style>
